@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   Image,
-  View,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -25,7 +25,7 @@ class LoginForm extends Component {
       .then(this.onLoginSuccess.bind(this))
       .catch(() => {
         alert('Usuário não existe')
-        this.setState({ loading: false})
+        this.setState({ loading: false })
       });
   }
 
@@ -49,10 +49,12 @@ class LoginForm extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <Image style={styles.logo} source={require('../../img/logo.png')} />
         <Text style={styles.titulo}>Login</Text>
         <TextInput
+          blurOnSubmit={false}
+          onSubmitEditing={() => { this.secondTextInput.focus(); }}
           style={styles.input}
           autoCorrect={false}
           placeholder="E-mail"
@@ -61,6 +63,7 @@ class LoginForm extends Component {
           onChangeText={email => this.setState({ email })}
         />
         <TextInput
+          ref={(input) => { this.secondTextInput = input; }}
           secureTextEntry
           style={styles.input}
           autoCorrect={false}
@@ -73,7 +76,7 @@ class LoginForm extends Component {
           Ao prosseguir você estará de acordo com nossos Termos de Uso e Política de Privacidade
         </Text>
         {this.renderButton()}
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -85,8 +88,6 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: 'black',
     height: height,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   input: {
     height: 45,
@@ -117,6 +118,7 @@ const styles = StyleSheet.create({
   logo: {
     paddingTop: 0,
     marginBottom: 30,
+    alignSelf: 'center',
   },
   margem: {
     marginTop: 30,
@@ -131,5 +133,6 @@ const styles = StyleSheet.create({
     paddingBottom: 80,
     fontWeight: 'bold',
     fontFamily: 'Arial, Helvetica, sans-serif',
+    alignSelf: 'center',
   },
 });

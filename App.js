@@ -12,12 +12,12 @@ export default class App extends Component {
 
   componentWillMount() {
     firebase.initializeApp({
-      apiKey: 'AIzaSyD2jRqkf5XjUgAK9h29ncE9TygFL_xD4AI',
-      authDomain: 'personalclub-4cdd1.firebaseapp.com',
-      databaseURL: 'https://personalclub-4cdd1.firebaseio.com',
-      projectId: 'personalclub-4cdd1',
-      storageBucket: 'personalclub-4cdd1.appspot.com',
-      messagingSenderId: '475448489530'
+      apiKey: "AIzaSyBez6h5K5USOfxZzFB3vE7Q39OxlJS7La8",
+      authDomain: "personalclub-52112.firebaseapp.com",
+      databaseURL: "https://personalclub-52112.firebaseio.com",
+      projectId: "personalclub-52112",
+      storageBucket: "personalclub-52112.appspot.com",
+      messagingSenderId: "1096701126602"
     });
 
     firebase.auth().onAuthStateChanged((user) => {
