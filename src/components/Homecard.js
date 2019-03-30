@@ -8,8 +8,8 @@ import {
   TouchableWithoutFeedback
 } from 'react-native';
 
-let width = Dimensions.get('window').width;
-let height = Dimensions.get('window').height;
+const width = Dimensions.get('window').width;
+const height = Dimensions.get('window').height;
 
 const Homecard = (props) => {
   const { src, text1, text2, logout } = props;
@@ -24,7 +24,6 @@ const Homecard = (props) => {
     </TouchableWithoutFeedback>
   );
 }
-
 
 export default Homecard;
 

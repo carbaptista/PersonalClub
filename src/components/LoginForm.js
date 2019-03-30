@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import firebase from '@firebase/app'
 import '@firebase/auth'
+import { Actions } from 'react-native-router-flux';
 
 let height = Dimensions.get('window').height;
 

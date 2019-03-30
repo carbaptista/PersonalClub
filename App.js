@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import firebase from '@firebase/app'
 import '@firebase/auth'
 import LoginForm from './src/components/LoginForm'
-import Home from './src/components/Home'
+import TabelaVelocidade from './src/components/TabelaVelocidade'
 import Splash from './src/components/Splash'
 
 export default class App extends Component {
@@ -29,12 +29,12 @@ export default class App extends Component {
     });
   }
 
-  test() {
+  isLoggedIn() {
     switch (this.state.loggedIn) {
       case null:
         return <Splash />
       case true:
-        return <Home />
+        return <Quem />
       case false:
         return <LoginForm />
     }
@@ -42,7 +42,7 @@ export default class App extends Component {
   render() {
     return (
       <View>
-        {this.test()}
+        <TabelaVelocidade />
       </View>
     );
   }
