@@ -13,8 +13,11 @@ import Homecard from './Homecard';
 class Home extends Component {
 
   render() {
+    
     return (
+      
       <ScrollView style={styles.container}>
+      
         <Homecard
           src={require('../../img/teste1.jpg')}
           text1='Conheça a Personal Club'
