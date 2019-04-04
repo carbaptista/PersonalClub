@@ -8,13 +8,16 @@ import {
 } from 'react-native';
 import firebase from '@firebase/app'
 import '@firebase/auth'
-import Homecard from './Homecard';
 
-class Home extends Component {
+import Homecard from './Homecard';
+import MenuButton from '../navigation/MenuButton'
+
+export default class HomeScreen extends React.Component {
 
   render() {
     return (
       <ScrollView style={styles.container}>
+        <MenuButton />
         <Homecard
           src={require('../../img/teste1.jpg')}
           text1='Conheça a Personal Club'
@@ -38,7 +41,6 @@ class Home extends Component {
   }
 }
 
-export default Home;
 
 const styles = StyleSheet.create({
   container: {
