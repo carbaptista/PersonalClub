@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import { View, StatusBar } from 'react-native'
 import firebase from '@firebase/app'
 import '@firebase/auth'
+
 import LoginForm from './src/components/LoginForm'
 import HomeScreen from './src/components/HomeScreen'
 import Quem from './src/components/Quem'
 import Splash from './src/components/Splash'
+// import DrawerNavigator from './src/navigation/DrawerNavigator'
 
-export default class App extends Component {
+export default class App extends React.Component {
 
   state = { loggedIn: null }
 
@@ -40,6 +42,7 @@ export default class App extends Component {
         return <LoginForm />
     }
   }
+
   render() {
     return (
       <View>
@@ -47,6 +50,7 @@ export default class App extends Component {
           backgroundColor={'transparent'}
           translucent
         />
+        {/* <DrawerNavigator /> */}
         {this.test()}
       </View>
     );

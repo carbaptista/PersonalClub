@@ -9,7 +9,7 @@ class Quem extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={styles.img} source={require('../../img/teste1.jpg')} />
+        <Image style={styles.img} source={require('../../img/teste1.png')} />
         <Text style={styles.titulo}>Quem Somos</Text>
         <Text style={styles.texto}> {'\u00A0'} {'\u00A0'} Após 23 anos da nossa sociedade, acumulando diversas experiências em mais de 34 anos no mercado do fitness, na gestão de diversos modelos e tamanhos de academias, na preparação de atletas de alto desempenho esportivo e de diversos cantores,  ministrando cursos e palestras por todo Brasil e atuando diretamente na área acadêmica nas maiores unversidades da Bahia, em 2006 resolvemos formatar o modelo de serviço do Personal Club, para uma demanda de clientes que buscavam um serviço com alta qualidade técnica e com um valor acessível.
 {"\n"} {"\n"}

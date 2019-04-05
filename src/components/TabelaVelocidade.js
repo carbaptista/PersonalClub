@@ -9,16 +9,16 @@ class TabelaVelocidade extends Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Image style={styles.img} source={require('../../img/tabelaVelocidade.png')} />
-        <Image style={styles.img} source={require('../../img/tabelaVelocidade.png')} />
-        <Image style={styles.img} source={require('../../img/tabelaVelocidade.png')} />
-        <Image style={styles.img} source={require('../../img/tabelaVelocidade.png')} />
-        <Image style={styles.img} source={require('../../img/tabelaVelocidade.png')} />
-        <Image style={styles.img} source={require('../../img/tabelaVelocidade.png')} />
-        <Image style={styles.img} source={require('../../img/tabelaVelocidade.png')} />
-        <Image style={styles.img} source={require('../../img/tabelaVelocidade.png')} />
-        <Image style={styles.img} source={require('../../img/tabelaVelocidade.png')} />
-        <Image style={styles.imgUltimo} source={require('../../img/tabelaVelocidade.png')} />
+        <Image style={styles.img} source={require('../../img/logo.png')} />
+        <Image style={styles.img} source={require('../../img/logo.png')} />
+        <Image style={styles.img} source={require('../../img/logo.png')} />
+        <Image style={styles.img} source={require('../../img/logo.png')} />
+        <Image style={styles.img} source={require('../../img/logo.png')} />
+        <Image style={styles.img} source={require('../../img/logo.png')} />
+        <Image style={styles.img} source={require('../../img/logo.png')} />
+        <Image style={styles.img} source={require('../../img/logo.png')} />
+        <Image style={styles.img} source={require('../../img/logo.png')} />
+        <Image style={styles.imgUltimo} source={require('../../img/logo.png')} />
       </ScrollView>
     );
   }

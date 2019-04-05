@@ -11,7 +11,7 @@ import {
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
-const Homecard = (props) => {
+const FirstHomecard = (props) => {
   const { src, text1, text2, logout } = props;
   return (
     <TouchableWithoutFeedback onPress={logout}>
@@ -25,12 +25,12 @@ const Homecard = (props) => {
   );
 }
 
-export default Homecard;
+export default FirstHomecard;
 
 const styles = StyleSheet.create({
   card: {
     width: width,
-    height: height / 3.2,
+    height: height / 2.5,
     marginBottom: 5
   },
   cardTextContainer: {
@@ -50,3 +50,5 @@ const styles = StyleSheet.create({
     color: '#fff',
   }
 });
+
+// #F38433

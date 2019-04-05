@@ -3,24 +3,24 @@ import { StyleSheet } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default class MenuButton extends React.Component {
-    render() {
-        return(
-            <Ionicons
-                name="md-menu"
-                color="#000000"
-                size={40}
-                style={style.menuIcon}
-                onPress={() => {}}
-            />
-        )
-    }
+	render() {
+		return(
+			<Ionicons
+				name="md-menu"
+				color="#FFFFFF"
+				size={40}
+				style={styles.menuIcon}
+				onPress={() => this.props.navigation.toggleDrawer()}
+			/>
+		)
+	}
 }
 
-const style = StyleSheet.create({
-    menuIcon: {
-        zIndex: 9,
-        position: 'absolute',
-        top: 20,
-        left: 10,
-    }
+const styles = StyleSheet.create({
+	menuIcon: {
+		zIndex: 9,
+		position: 'absolute',
+		top: 20,
+		left: 10,
+	}
 })

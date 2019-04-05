@@ -9,6 +9,7 @@ import {
 import firebase from '@firebase/app'
 import '@firebase/auth'
 
+import FirstHomecard from './FirstHomeCard'
 import Homecard from './Homecard';
 import MenuButton from '../navigation/MenuButton'
 
@@ -17,19 +18,19 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <MenuButton />
-        <Homecard
-          src={require('../../img/teste1.jpg')}
+        <MenuButton navigation={this.props.navigation} />
+        <FirstHomecard
+          src={require('../../img/teste1.png')}
           text1='Conheça a Personal Club'
           text2='Clique aqui para saber mais'
         />
         <Homecard
-          src={require('../../img/teste2.jpg')}
+          src={require('../../img/teste2.png')}
           text1='Treine em Casa'
           text2='Nossas Aulas'
         />
         <Homecard
-          src={require('../../img/teste3.jpg')}
+          src={require('../../img/teste3.png')}
           text1='Acompanhe'
           text2='Seus Resultados'
         />
