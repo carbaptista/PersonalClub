@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
-import { View } from 'react-native'
+import { Router, Scene } from 'react-native-router-flux';
 import firebase from '@firebase/app'
 import '@firebase/auth'
 import LoginForm from './src/components/LoginForm'
-import TabelaVelocidade from './src/components/TabelaVelocidade'
+import Quem from './src/components/Quem'
 import Splash from './src/components/Splash'
+import Home from './src/components/Home'
+import Tabelas from './src/components/Tabelas';
+import TesteVelocidade from './src/components/TesteVelocidade';
 
 export default class App extends Component {
 
@@ -12,12 +15,12 @@ export default class App extends Component {
 
   componentWillMount() {
     firebase.initializeApp({
-      apiKey: "",
-      authDomain: "",
-      databaseURL: "",
-      projectId: "",
-      storageBucket: "",
-      messagingSenderId: ""
+      apiKey: "AIzaSyBez6h5K5USOfxZzFB3vE7Q39OxlJS7La8",
+      authDomain: "personalclub-52112.firebaseapp.com",
+      databaseURL: "https://personalclub-52112.firebaseio.com",
+      projectId: "personalclub-52112",
+      storageBucket: "personalclub-52112.appspot.com",
+      messagingSenderId: "1096701126602"
     });
 
     firebase.auth().onAuthStateChanged((user) => {
@@ -32,18 +35,54 @@ export default class App extends Component {
   isLoggedIn() {
     switch (this.state.loggedIn) {
       case null:
-        return <Splash />
+        return (
+          <Scene
+            key='splash'
+            component={Splash}
+            hideNavBar={true}
+          />
+        );
       case true:
-        return <Quem />
+        return (
+          <Scene
+            key='home'
+            component={Home}
+            hideNavBar={true}
+          />
+        );
       case false:
-        return <LoginForm />
+        return (
+          <Scene
+            key='login'
+            component={LoginForm}
+            hideNavBar={true}
+            initial
+          />
+        );
     }
   }
   render() {
     return (
-      <View>
-        <TabelaVelocidade />
-      </View>
+      <Router>
+        <Scene key="root">
+          {this.isLoggedIn()}
+          <Scene
+            key="quem"
+            component={Quem}
+            hideNavBar={true}
+          />
+          <Scene
+            key="tabelas"
+            component={Tabelas}
+            hideNavBar={true}
+          />
+          <Scene
+            key="testeVel"
+            component={TesteVelocidade}
+            hideNavBar={true}
+          />
+        </Scene>
+      </Router>
     );
   }
 }

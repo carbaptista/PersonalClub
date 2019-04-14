@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   ScrollView,
   StyleSheet,
-  Dimensions,
   TouchableHighlight,
   Text
 } from 'react-native';
@@ -19,16 +18,19 @@ class Home extends Component {
           src={require('../../img/teste1.jpg')}
           text1='Conheça a Personal Club'
           text2='Clique aqui para saber mais'
+          link='quem'
         />
         <Homecard
           src={require('../../img/teste2.jpg')}
           text1='Treine em Casa'
           text2='Nossas Aulas'
+          link='tabelas'
         />
         <Homecard
           src={require('../../img/teste3.jpg')}
           text1='Acompanhe'
           text2='Seus Resultados'
+          link='testeVel'
         />
         <TouchableHighlight style={styles.botao} onPress={() => firebase.auth().signOut()}>
           <Text style={styles.buttonText}>Logout</Text>
