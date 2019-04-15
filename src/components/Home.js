@@ -30,7 +30,7 @@ class Home extends Component {
           src={require('../../img/teste3.jpg')}
           text1='Acompanhe'
           text2='Seus Resultados'
-          link='testeVel'
+          link='testeVelIntro'
         />
         <TouchableHighlight style={styles.botao} onPress={() => firebase.auth().signOut()}>
           <Text style={styles.buttonText}>Logout</Text>

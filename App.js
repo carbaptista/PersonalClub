@@ -8,6 +8,7 @@ import Splash from './src/components/Splash'
 import Home from './src/components/Home'
 import Tabelas from './src/components/Tabelas';
 import TesteVelocidade from './src/components/TesteVelocidade';
+import TesteVelIntro from './src/components/TesteVelIntro';
 
 export default class App extends Component {
 
@@ -65,7 +66,7 @@ export default class App extends Component {
     return (
       <Router>
         <Scene key="root">
-          {this.isLoggedIn()}
+        {this.isLoggedIn()}
           <Scene
             key="quem"
             component={Quem}
@@ -79,6 +80,11 @@ export default class App extends Component {
           <Scene
             key="testeVel"
             component={TesteVelocidade}
+            hideNavBar={true}
+          />
+          <Scene
+            key="testeVelIntro"
+            component={TesteVelIntro}
             hideNavBar={true}
           />
         </Scene>
