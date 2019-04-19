@@ -8,6 +8,7 @@ import {
 import firebase from '@firebase/app'
 import '@firebase/auth'
 import Homecard from './Homecard';
+import { Actions } from 'react-native-router-flux';
 
 class Home extends Component {
 
@@ -30,8 +31,11 @@ class Home extends Component {
           src={require('../../img/teste3.jpg')}
           text1='Acompanhe'
           text2='Seus Resultados'
-          link='testeVelIntro'
+          link='resultadosPesquisa'
         />
+        <TouchableHighlight style={styles.botao} onPress={() => Actions.perfil()}>
+          <Text style={styles.buttonText}>Perfil</Text>
+        </TouchableHighlight>
         <TouchableHighlight style={styles.botao} onPress={() => firebase.auth().signOut()}>
           <Text style={styles.buttonText}>Logout</Text>
         </TouchableHighlight>
@@ -55,7 +59,8 @@ const styles = StyleSheet.create({
   botao: {
     alignSelf: 'stretch',
     height: 45,
-    backgroundColor: '#f38433'
+    backgroundColor: '#f38433',
+    marginBottom: 5,
   },
   buttonText: {
     color: '#fff',
