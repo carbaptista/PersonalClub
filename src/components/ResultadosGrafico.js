@@ -32,8 +32,6 @@ class ResultadosGrafico extends Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.titulo}>Resultados</Text>
-        <View style={{ borderBottomColor: '#f38433', borderBottomWidth: 1, }} />
         <Text style={styles.subTitulo}>Peso</Text>
         <StackedBarChart
           data={data}
@@ -56,7 +54,7 @@ class ResultadosGrafico extends Component {
           <Text style={styles.infos}>74.6</Text>
         </View>
         <View style={{ borderBottomColor: '#555', borderBottomWidth: 1, }} />
-        <Button style={styles.botao2} mode='contained' onPress={() => Actions.pop()}>
+        <Button style={styles.botao2} mode='contained' onPress={() => Actions.pop('resultadosPesquisa')}>
           Voltar
         </Button>
       </View>

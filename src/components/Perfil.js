@@ -13,8 +13,6 @@ class Perfil extends Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Text style={styles.titulo}>Meu Perfil</Text>
-        <View style={{ borderBottomColor: '#f38433', borderBottomWidth: 1, }} />
         <View style={styles.top}>
           <PhotoUpload onPhotoSelect={avatar => {
             if (avatar) {
@@ -24,7 +22,7 @@ class Perfil extends Component {
           photoPickerTitle="Escolher Foto"
           >
             <Image
-              source={require('../../img/teste1.jpg')}
+              source={require('../../img/cap.jpg')}
               style={{
                 width: 100,
                 height: 100,

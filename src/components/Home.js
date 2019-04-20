@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import {
   ScrollView,
   StyleSheet,
-  TouchableHighlight,
-  Text
 } from 'react-native';
-import firebase from '@firebase/app'
 import '@firebase/auth'
 import Homecard from './Homecard';
-import { Actions } from 'react-native-router-flux';
 
 class Home extends Component {
 
@@ -25,7 +21,7 @@ class Home extends Component {
           src={require('../../img/teste2.jpg')}
           text1='Treine em Casa'
           text2='Nossas Aulas'
-          link='tabelas'
+          link='home'
         />
         <Homecard
           src={require('../../img/teste3.jpg')}
@@ -33,12 +29,6 @@ class Home extends Component {
           text2='Seus Resultados'
           link='resultadosPesquisa'
         />
-        <TouchableHighlight style={styles.botao} onPress={() => Actions.perfil()}>
-          <Text style={styles.buttonText}>Perfil</Text>
-        </TouchableHighlight>
-        <TouchableHighlight style={styles.botao} onPress={() => firebase.auth().signOut()}>
-          <Text style={styles.buttonText}>Logout</Text>
-        </TouchableHighlight>
       </ScrollView>
     );
   }

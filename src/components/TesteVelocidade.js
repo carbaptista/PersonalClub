@@ -17,13 +17,6 @@ class TesteVelocidade extends Component {
 
     return (
       <ScrollView style={styles.container}>
-        <Text style={styles.titulo}>Teste de Velocidade</Text>
-        <View
-          style={{
-            borderBottomColor: '#f38433',
-            borderBottomWidth: 1,
-          }}
-        />
         <Text style={styles.usuario}>Steve Rogers 98 anos</Text>
         <View style={styles.inputs}>
           <Text style={styles.conteudo}>Qual seu Peso?</Text>

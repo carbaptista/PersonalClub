@@ -9,13 +9,6 @@ class ResultadosPesquisa extends Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Text style={styles.titulo}>Resultados</Text>
-        <View
-          style={{
-            borderBottomColor: '#f38433',
-            borderBottomWidth: 1,
-          }}
-        />
         <PesquisaSection
           titulo="Peso"
           info1="Atual"

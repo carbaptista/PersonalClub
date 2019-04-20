@@ -10,13 +10,6 @@ class TesteVelIntro extends Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Text style={styles.titulo}>Teste de Velocidade</Text>
-        <View
-          style={{
-            borderBottomColor: '#f38433',
-            borderBottomWidth: 1,
-          }}
-        />
         <Text style={styles.subtitulo}>Velocidade de Segurança</Text>
         <Text style={styles.titulo}>Seu Resultado: >20</Text>
         <Button style={styles.botao} mode='contained' onPress={() => Actions.testeVel()}>
