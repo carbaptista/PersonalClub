@@ -7,18 +7,19 @@ import {
   Dimensions,
   TouchableWithoutFeedback
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 
 const Homecard = (props) => {
-  const { src, text1, text2, logout } = props;
+  const { src, text1, text2, link } = props;
   return (
-    <TouchableWithoutFeedback onPress={logout}>
+    <TouchableWithoutFeedback onPress={() => Actions[link]()}>
       <ImageBackground style={styles.card} source={src}>
         <View style={styles.cardTextContainer}>
-          <Text style={styles.cardText1}>{text1}</Text>
-          <Text style={styles.cardText2}>{text2}</Text>
+          <Text onPress={() => Actions[link]()} style={styles.cardText1}>{text1}</Text>
+          <Text onPress={() => Actions[link]()} style={styles.cardText2}>{text2}</Text>
         </View>
       </ImageBackground>
     </TouchableWithoutFeedback>
@@ -30,8 +31,8 @@ export default Homecard;
 const styles = StyleSheet.create({
   card: {
     width: width,
-    height: height / 3.2,
-    marginBottom: 5
+    height: height / 3.5,
+    marginBottom: 20
   },
   cardTextContainer: {
     flex: 1,
