@@ -12,19 +12,19 @@ class Home extends Component {
     return (
       <ScrollView style={styles.container}>
         <Homecard
-          src={require('../../img/teste1.jpg')}
+          src={require('../../img/teste1.png')}
           text1='Conheça a Personal Club'
           text2='Clique aqui para saber mais'
           link='quem'
         />
         <Homecard
-          src={require('../../img/teste2.jpg')}
+          src={require('../../img/teste2.png')}
           text1='Treine em Casa'
           text2='Nossas Aulas'
           link='home'
         />
         <Homecard
-          src={require('../../img/teste3.jpg')}
+          src={require('../../img/teste3.png')}
           text1='Acompanhe'
           text2='Seus Resultados'
           link='resultadosPesquisa'
