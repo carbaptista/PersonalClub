@@ -4,6 +4,8 @@ import {
   StyleSheet,
 } from 'react-native';
 import '@firebase/auth'
+
+import FirstHomecard from './FirstHomeCard'
 import Homecard from './Homecard';
 
 class Home extends Component {
@@ -11,7 +13,7 @@ class Home extends Component {
   render() {
     return (
       <ScrollView style={styles.container}>
-        <Homecard
+        <FirstHomecard
           src={require('../../img/teste1.png')}
           text1='Conheça a Personal Club'
           text2='Clique aqui para saber mais'
