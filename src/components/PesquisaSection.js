@@ -16,7 +16,7 @@ class PesquisaSection extends Component {
         <View>
           <View style={styles.container}>
             <Text style={styles.titulo}>{this.props.titulo}</Text>
-            <TouchableHighlight onPress={() => Actions.resultadosGrafico()}>
+            <TouchableHighlight>
               <Image style={styles.icon} source={require('../../img/graphIcon.png')} />
             </TouchableHighlight>
           </View>

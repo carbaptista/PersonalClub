@@ -11,7 +11,6 @@ import Tabelas from './src/components/Tabelas';
 import TesteVelocidade from './src/components/TesteVelocidade';
 import TesteVelIntro from './src/components/TesteVelIntro';
 import ResultadosPesquisa from './src/components/ResultadosPesquisa';
-import ResultadosGrafico from './src/components/ResultadosGrafico';
 import Perfil from './src/components/Perfil';
 import Menu from './src/components/Menu';
 
@@ -21,12 +20,12 @@ export default class App extends Component {
 
   componentWillMount() {
     firebase.initializeApp({
-      apiKey: "",
-      authDomain: "",
-      databaseURL: "",
-      projectId: "",
-      storageBucket: "",
-      messagingSenderId: ""
+      apiKey: "AIzaSyBez6h5K5USOfxZzFB3vE7Q39OxlJS7La8",
+      authDomain: "personalclub-52112.firebaseapp.com",
+      databaseURL: "https://personalclub-52112.firebaseio.com",
+      projectId: "personalclub-52112",
+      storageBucket: "personalclub-52112.appspot.com",
+      messagingSenderId: "1096701126602"
     });
 
     firebase.auth().onAuthStateChanged((user) => {
@@ -120,10 +119,6 @@ export default class App extends Component {
         <Scene key="root">
           {this.isLoggedIn()}
           <Scene key="tabelas" component={Tabelas} hideNavBar={true} />
-          <Scene key="resultadosGrafico" component={ResultadosGrafico} title="Resultados"
-            navigationBarStyle={styles.navbar} titleStyle={styles.navTitle}
-            tintColor="white"
-          />
         </Scene>
       </Router>
     );
