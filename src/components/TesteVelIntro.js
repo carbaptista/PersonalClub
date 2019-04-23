@@ -16,7 +16,7 @@ class TesteVelIntro extends Component {
           Fazer Teste
         </Button>
         <Image style={styles.img}
-          source={require('../../img/tabelaVel.png')}
+          source={require('../../img/Tabela_de_Velocidade.png')}
           resizeMode='contain'
         />
       </ScrollView>

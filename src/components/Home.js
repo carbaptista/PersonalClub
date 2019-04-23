@@ -20,7 +20,7 @@ class Home extends Component {
           link='quem'
         />
         <Homecard
-          src={require('../../img/teste2.png')}
+          src={require('../../img/teste2lock.png')}
           text1='Treine em Casa'
           text2='Nossas Aulas'
           link='home'
