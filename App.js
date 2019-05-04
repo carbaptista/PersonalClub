@@ -28,7 +28,7 @@ export default class App extends Component {
       messagingSenderId: "1096701126602"
     });
 
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.setState({ loggedIn: true })
       } else {

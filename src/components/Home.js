@@ -3,7 +3,9 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
+import firebase from '@firebase/app'
 import '@firebase/auth'
+import '@firebase/firestore'
 import Homecard from './Homecard';
 
 class Home extends Component {

@@ -1,78 +1,136 @@
 import React, { Component } from 'react';
-import { Image, StyleSheet, View, Text, ScrollView, TextInput, Dimensions } from 'react-native';
-import PhotoUpload from 'react-native-photo-upload';
-import { Button } from 'react-native-paper';
+import { Image, StyleSheet, View, Text, ScrollView, Dimensions, YellowBox } from 'react-native';
+import PhotoUpload from 'react-native-photo-upload'
+import firebase from '@firebase/app';
+import '@firebase/auth';
+import '@firebase/firestore';
+import '@firebase/storage';
+import _ from 'lodash';
+
+YellowBox.ignoreWarnings(['Setting a timer']);
+const _console = _.clone(console);
+console.warn = message => {
+  if (message.indexOf('Setting a timer') <= -1) {
+    _console.warn(message);
+  }
+};
 
 const width = Dimensions.get('window').width;
 
 class Perfil extends Component {
+
+  componentWillMount() {
+    if (!firebase.apps.length) {
+      firebase.initializeApp({
+        apiKey: "AIzaSyBez6h5K5USOfxZzFB3vE7Q39OxlJS7La8",
+        authDomain: "personalclub-52112.firebaseapp.com",
+        databaseURL: "https://personalclub-52112.firebaseio.com",
+        projectId: "personalclub-52112",
+        storageBucket: "personalclub-52112.appspot.com",
+        messagingSenderId: "1096701126602"
+      });
+    }
+  }
+
+  getData() {
+    const db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        var docRef = db.collection('usuarios').doc(user.uid);
+        docRef.get().then(doc => {
+          if (doc.exists) {
+            this.setState({
+              fullname: doc.data().nome,
+              nascimento: doc.data().idade,
+              m: doc.data().sexo,
+              pais: doc.data().pais,
+              email: doc.data().email,
+              telefone: doc.data().telefone,
+              loaded: true,
+            })
+          }
+        }).catch(error => {
+          console.log("Error getting document:", error);
+        });
+      }
+    })
+  }
+
   state = {
     m: true,
+    fullname: 'Steve Rogers',
+    nascimento: '',
+    pais: '',
+    email: '',
+    telefone: '',
+    loaded: null,
+    avatar: 'file:///storage/emulated/0/Snapseed/eu.jpeg'
   }
 
   render() {
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.container} >
+        {this.getData()}
         <View style={styles.top}>
           <PhotoUpload onPhotoSelect={avatar => {
-            if (avatar) {
-              console.log('Image base64 string: ', avatar)
-            }
+            firebase.storage().ref().putString(avatar, 'base64').then(snapshot => {
+              alert(snapshot);
+            }).catch(error => {
+              alert(error);
+            })
           }}
-          photoPickerTitle="Escolher Foto"
+            photoPickerTitle="Escolher Foto"
           >
             <Image
-              source={require('../../img/cap.jpg')}
+              source={{ uri: this.state.avatar }}
               style={{
                 width: 100,
                 height: 100,
-                borderRadius: 75
+                borderRadius: 75,
               }}
               resizeMode='cover'
             />
           </PhotoUpload>
-          <Text style={styles.nome}>Olá, Steve Rogers.</Text>
+          <Text style={this.state.loaded ? styles.nome : styles.nomeNull}>Olá, {this.state.fullname}</Text>
         </View>
         <View style={styles.infoContainer}>
           <Text style={styles.infoTitulo}>Dados Pessoais</Text>
           <View style={{ borderBottomColor: '#f38433', borderBottomWidth: 1, }} />
           <View style={styles.infoCampoContainer}>
             <Text style={styles.infoCampo}>Nome</Text>
-            <TextInput style={[styles.infoCampo, { color: '#f38433' }]}>Steve Rogers</TextInput>
+            <Text style={[styles.infoCampo, { color: '#f38433' }]}>{this.state.fullname}</Text>
           </View>
           <View style={{ borderBottomColor: '#555', borderBottomWidth: 1, }} />
           <View style={styles.infoCampoContainer}>
             <Text style={styles.infoCampo}>Data de Nascimento</Text>
-            <TextInput style={[styles.infoCampo, { color: '#f38433' }]}>04/06/1920</TextInput>
+            <Text style={[styles.infoCampo, { color: '#f38433' }]}>{this.state.nascimento}</Text>
           </View>
           <View style={{ borderBottomColor: '#555', borderBottomWidth: 1, }} />
           <View style={styles.infoCampoContainer}>
             <Text style={[styles.infoCampo, { alignSelf: 'center' }]}>Sexo</Text>
             <View style={{ flexDirection: 'row' }}>
-              <Text onPress={() => this.setState({ m: true })} style={[styles.infoCampo, this.state.m ? styles.laranja : styles.cinza]}>M</Text>
-              <Text onPress={() => this.setState({ m: false })} style={[styles.infoCampo, this.state.m ? styles.cinza : styles.laranja]}>F</Text>
+              <Text style={[styles.infoCampo, this.state.m ? styles.laranja : styles.cinza]}>M</Text>
+              <Text style={[styles.infoCampo, this.state.m ? styles.cinza : styles.laranja]}>F</Text>
             </View>
           </View>
           <View style={{ borderBottomColor: '#555', borderBottomWidth: 1, }} />
           <View style={styles.infoCampoContainer}>
             <Text style={styles.infoCampo}>País</Text>
-            <TextInput style={[styles.infoCampo, { color: '#f38433' }]}>Brasil</TextInput>
+            <Text style={[styles.infoCampo, { color: '#f38433' }]}>{this.state.pais}</Text>
           </View>
           <View style={{ borderBottomColor: '#555', borderBottomWidth: 1, }} />
           <View style={styles.infoCampoContainer}>
             <Text style={styles.infoCampo}>E-mail</Text>
-            <TextInput style={[styles.infoCampo, { color: '#f38433' }]}>steve@rogers.com.br</TextInput>
+            <Text style={[styles.infoCampo, { color: '#f38433' }]}>{this.state.email}</Text>
           </View>
           <View style={{ borderBottomColor: '#555', borderBottomWidth: 1, }} />
           <View style={styles.infoCampoContainer}>
             <Text style={styles.infoCampo}>DDD+ Número de Telefone</Text>
-            <TextInput style={[styles.infoCampo, { color: '#f38433' }]}>71 99209-3766</TextInput>
+            <Text style={[styles.infoCampo, { color: '#f38433' }]}>{this.state.telefone}</Text>
           </View>
           <View style={{ borderBottomColor: '#555', borderBottomWidth: 1, }} />
         </View>
-        <Button style={styles.botao} mode='contained'>
-          Salvar
-        </Button>
         <View style={{ borderBottomColor: '#555', borderBottomWidth: 1, }} />
         <Text style={styles.contato}>Nossos Contatos</Text>
         <View style={styles.containerContato}>
@@ -80,7 +138,7 @@ class Perfil extends Component {
           <Image style={styles.icones} source={require('../../img/insta.png')} />
           <Image style={styles.icones} source={require('../../img/whatsapp.png')} />
         </View>
-      </ScrollView>
+      </ScrollView >
     );
   }
 }
@@ -93,18 +151,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#333',
   },
 
-  avatar: {
-    width: 50,
-    height: 50,
-    borderRadius: 75
-  },
-
   titulo: {
     textAlign: 'center',
     color: '#fff',
     fontSize: 24,
     marginTop: 15,
     marginBottom: 15,
+  },
+
+  nomeNull: {
+    color: '#333',
+    fontSize: 24,
+    fontWeight: 'bold',
   },
 
   nome: {
@@ -116,8 +174,10 @@ const styles = StyleSheet.create({
   top: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     marginTop: 10,
-    marginRight: 20,
+    marginRight: width * 0.1,
+    width: width * 0.90,
   },
 
   infoContainer: {
