@@ -1,19 +1,25 @@
 import React, { Component } from 'react'
-import { View, StatusBar } from 'react-native'
+import { StyleSheet } from 'react-native';
+import { Router, Scene, Drawer } from 'react-native-router-flux';
 import firebase from '@firebase/app'
 import '@firebase/auth'
-
 import LoginForm from './src/components/LoginForm'
-import HomeScreen from './src/components/HomeScreen'
 import Quem from './src/components/Quem'
 import Splash from './src/components/Splash'
-// import DrawerNavigator from './src/navigation/DrawerNavigator'
+import Home from './src/components/Home'
+import Tabelas from './src/components/Tabelas';
+import TesteVelocidade from './src/components/TesteVelocidade';
+import TesteVelIntro from './src/components/TesteVelIntro';
+import ResultadosPesquisa from './src/components/ResultadosPesquisa';
+import ResultadosGrafico from './src/components/ResultadosGrafico';
+import Perfil from './src/components/Perfil';
+import Menu from './src/components/Menu';
 
-export default class App extends React.Component {
+export default class App extends Component {
 
   state = { loggedIn: null }
 
-  componentWillMount() {
+  componentDidMount() {
     firebase.initializeApp({
       apiKey: "AIzaSyBez6h5K5USOfxZzFB3vE7Q39OxlJS7La8",
       authDomain: "personalclub-52112.firebaseapp.com",
@@ -23,7 +29,7 @@ export default class App extends React.Component {
       messagingSenderId: "1096701126602"
     });
 
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.setState({ loggedIn: true })
       } else {
@@ -32,28 +38,124 @@ export default class App extends React.Component {
     });
   }
 
-  test() {
+  isLoggedIn() {
     switch (this.state.loggedIn) {
       case null:
-        return <Splash />
+        return (
+          <Scene
+            key='splash'
+            component={Splash}
+            hideNavBar={true}
+          />
+        );
       case true:
-        return <HomeScreen />
+        return (
+          <Drawer key="drawer" drawer contentComponent={Menu} drawerWidth={300} hideNavBar={true}>
+            <Scene
+              key='home'
+              component={Home}
+              title=""
+              titleStyle={styles.navTitle}
+              tintColor="white"
+              navTransparent={true}
+              leftButtonStyle={styles.drawer}
+            />
+            <Scene
+              key='quem'
+              component={Quem}
+              title=""
+              titleStyle={styles.navTitle}
+              tintColor="white"
+              navTransparent={true}
+              leftButtonStyle={styles.drawer}
+            />
+            <Scene
+              key='resultadosPesquisa'
+              component={ResultadosPesquisa}
+              title="Resultados"
+              titleStyle={styles.navTitle}
+              navigationBarStyle={styles.navbar}
+              tintColor="white"
+            />
+          </Drawer>
+        );
       case false:
-        return <LoginForm />
+        return (
+          <Scene
+            key='login'
+            component={LoginForm}
+            hideNavBar={true}
+            initial
+          />
+        );
     }
   }
-
   render() {
     return (
-      <View>
-        <StatusBar
-          backgroundColor={'transparent'}
-          translucent
-        />
-        {/* <DrawerNavigator /> */}
-        {this.test()}
-      </View>
+      <Router>
+        <Scene key="root">
+          {this.isLoggedIn()}
+          <Scene key="tabelas" component={Tabelas} hideNavBar={true} />
+          <Scene
+            key='resultadosGrafico'
+            component={ResultadosGrafico}
+            title="Resultados"
+            titleStyle={styles.navTitleSemLeftButton}
+            navigationBarStyle={styles.navbar}
+            tintColor="white"
+            renderLeftButton={() => (null)}
+          />
+          <Scene
+            key='testeVelIntro'
+            component={TesteVelIntro}
+            title="Velocidade de Segurança"
+            titleStyle={styles.navTitle}
+            navigationBarStyle={styles.navbar}
+            tintColor="white"
+          />
+          <Scene
+            key='testeVel'
+            component={TesteVelocidade}
+            title="Teste de Velocidade"
+            titleStyle={styles.navTitle}
+            navigationBarStyle={styles.navbar}
+            tintColor="white"
+          />
+          <Scene
+              key='perfil'
+              component={Perfil}
+              title="Meu Perfil"
+              titleStyle={styles.navTitle}
+              navigationBarStyle={styles.navbar}
+              tintColor="white"
+            />
+        </Scene>
+      </Router>
     );
   }
-
 }
+
+const styles = StyleSheet.create({
+  navbar: {
+    backgroundColor: '#333',
+    borderBottomWidth: 1,
+    borderBottomColor: 'orange',
+  },
+
+  navTitle: {
+    color: 'white',
+    flex: 1,
+    textAlign: 'center',
+    marginRight: 50,
+  },
+
+  navTitleSemLeftButton: {
+    color: 'white',
+    flex: 1,
+    textAlign: 'center',
+  },
+
+  drawer: {
+    marginTop: -50,
+  }
+});

@@ -1,11 +1,12 @@
 import React from 'react'
-import { Image, View, StyleSheet, Dimensions } from 'react-native'
+import { Image, View, StyleSheet, Dimensions, StatusBar } from 'react-native'
 
 let height = Dimensions.get('window').height;
 
 const Splash = () => {
 	return (
 		<View style={styles.container}>
+			<StatusBar hidden animated="false" />
 			<Image source={require('../../img/logo.png')} />
 		</View>
 	);
