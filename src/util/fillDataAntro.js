@@ -24,9 +24,9 @@ const fillDataAntro = (doc, peso, bf, imc, itm, pccq, muscular, arr) => {
 	itm.id = 3
 	arr[3] = itm
 	pccq.dados = doc.PCCQs
-	pccq.valor1 = doc.pccq
+	pccq.valor1 = doc.pccq.toFixed(2)
 	pccq.valor2 = doc.pccqMeta
-	pccq.valor3 = doc.pccqInicial
+	pccq.valor3 = doc.pccqInicial.toFixed(2)
 	pccq.id = 4
 	arr[4] = pccq
 	muscular.dados = doc.Musculares

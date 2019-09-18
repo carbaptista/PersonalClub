@@ -20,7 +20,7 @@ export let muscular = {
 }
 export let vo2 = {
 	titulo: 'Vo2',
-	unidade: 'ml/kg/m'
+	unidade: 'ml/kg/min'
 }
 export let flex = {
 	titulo: 'Flexibilidade',
@@ -31,7 +31,7 @@ export let abdomen = {
 	unidade: 'reps'
 }
 export let apoio = {
-	titulo: 'Apoio',
+	titulo: 'Apoio Solo',
 	unidade: 'reps'
 }
 export let agachamento = {
