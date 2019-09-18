@@ -1,0 +1,40 @@
+const fillDataAntro = (doc, peso, bf, imc, itm, pccq, muscular, arr) => {
+	peso.dados = doc.Pesos
+	peso.valor1 = doc.peso
+	peso.valor2 = doc.pesoMeta
+	peso.valor3 = doc.pesoInicial
+	peso.id = 0
+	arr[0] = peso
+	bf.dados = doc.BFs
+	bf.valor1 = doc.bf
+	bf.valor2 = doc.bfMeta
+	bf.valor3 = doc.bfInicial
+	bf.id = 1
+	arr[1] = bf
+	imc.dados = doc.IMCs
+	imc.valor1 = doc.imc
+	imc.valor2 = doc.imcMeta
+	imc.valor3 = doc.imcInicial
+	imc.id = 2
+	arr[2] = imc
+	itm.dados = doc.ITMs
+	itm.valor1 = Math.round(doc.itm)
+	itm.valor2 = doc.itmMeta
+	itm.valor3 = Math.round(doc.itmInicial)
+	itm.id = 3
+	arr[3] = itm
+	pccq.dados = doc.PCCQs
+	pccq.valor1 = doc.pccq
+	pccq.valor2 = doc.pccqMeta
+	pccq.valor3 = doc.pccqInicial
+	pccq.id = 4
+	arr[4] = pccq
+	muscular.dados = doc.Musculares
+	muscular.valor1 = doc.muscular
+	muscular.valor2 = doc.muscularMeta
+	muscular.valor3 = doc.muscularInicial
+	muscular.id = 5
+	arr[5] = muscular
+}
+
+export default fillDataAntro

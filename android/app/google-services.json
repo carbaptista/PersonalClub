@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "116547347880",
+    "firebase_url": "https://personalclub-23861.firebaseio.com",
+    "project_id": "personalclub-23861",
+    "storage_bucket": "personalclub-23861.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116547347880:android:59c70990866b85506fa99d",
+        "android_client_info": {
+          "package_name": "com.personalclublnekrahcup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "116547347880-6ivnnujol2mbeddj0vb8peroh9o28nb5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT29M8ZYfy9eKOdJL_NoRXmgIVlwTxDYY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "116547347880-6ivnnujol2mbeddj0vb8peroh9o28nb5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
