@@ -11,7 +11,7 @@
     "paths-js": "^0.4.7",
     "point-in-polygon": "^1.0.1",
     "react": "16.6.3",
-    "react-native": "0.58.3",
+    "react-native": "0.70.2",
     "react-native-chart-kit": "^2.6.1",
     "react-native-firebase": "^5.2.1",
     "react-native-fs": "^2.13.3",
